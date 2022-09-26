@@ -1,0 +1,85 @@
+--66) Display the name of the employee who earns highest salary. 
+select first_name from employees where salary=(select max(salary) from employees);
+
+--67) Display the employee number and name for employee working as clerk and earning highest salary among clerks.
+select employee_id,first_name from employees where job_id='ST_CLERK' and salary=(select max(salary) from employees where job_id='ST_CLERK');
+
+--68) Display the names of salesman who earns a salary more than the highest salary of any clerk.
+select first_name,salary from employees where job_id ='SA_MAN' and salary>=(select max(salary) from employees where job_id='ST_CLERK');
+
+--69) Display the names of clerks who earn a salary more than the lowest salary of any salesman.
+select first_name from employees where job_id='ST_CLERK' and salary>=(select min(salary) from employees where job_id='SA_MAN');
+
+--70) Display the names of employees who earn a salary more than that of Jones or that of salary greater than that of Scott.
+select first_name from employees where salary>=(select salary from employees where first_name='Jones');
+
+--71) Display the employee’s salary who earns highest salary in their respective departments.
+select employee_id,first_name,salary from employees where salary IN(select max(salary) from employees group by department_id);
+
+--72) Display the employee’s salary who earns highest salaries in their respective job groups.
+select first_name,salary from employees where salary IN (select max(salary) from employees group by job_id);
+
+--73) Display the employee names who are working in Chicago.
+select first_name from employees where location='Chicago';
+
+--74) Display the Job groups having total salary greater than the maximum salary for managers.
+select job_id from employees group by job_id having sum(salary)> (select max(salary) from employees where job_id='SA_MAN');  
+
+--75) Display the names of employees from department number 10 with salary greater than that of any employee working in other department.
+select first_name from employees where department_id=10 and salary > any(select salary from employees where department_id not in(10));
+
+--76) Display the names of the employees from department number 10 with salary greater than that of all employees working in other departments.
+select first_name from employees where department_id=10 and salary > any(select salary from employees where department_id not in(10));
+
+--77) Display the common jobs from department number 10 and 20.
+select job_id from employees where department_id=10 and job_id in (select job_id from employees where department_id=20);
+
+--78) Display the jobs found in department 10 and 20 Eliminate duplicate jobs. 
+select job_id from employees where department_id=10 or department_id=20;
+
+--79) Display the jobs which are unique to department 10. 
+select distinct job_id from employees where department_id=10;
+
+--80) Display the details of those who do not have any person working under them.
+select first_name from employees where manager_id is null;
+
+--81) Display the details of those employees who are in sales department and grade is 3. 
+
+
+--82) Update the salary of each employee by 10% increment who are not eligible for commission.
+update employees set salary=salary*0.10 where commission_pct is null;
+
+--83) SELECT those employee who joined the company before 31-dec-82 while their dept location is newyork or Chicago.
+select first_name from employees where hire_date<'31-12-1882' and department_id in(select department_id from locations where city in('newyork','chicago'));
+
+--84) DISPLAY EMPLOYEE NAME,JOB,DEPARTMENT,LOCATION FOR ALL WHO ARE WORKING AS MANAGER? 
+select first_name,job_id,department_id from employees where job_id='SA_MAN';
+
+--85) DISPLAY THOSE EMPLOYEES WHOSE MANAGER NAME IS JONES? [AND ALSO DISPLAY THEIR MANAGER NAME]?
+
+
+--86) Display name and salary of ford if his salary is equal to hisal of his grade
+
+--87) Display employee name,job,depart name ,manager name,his grade and make out an under department wise?
+
+--88) List out all employees name,job,salary,grade and depart name for every one in the company except 'CLERK'. Sort on salary.
+select first_name,job_id,salary,department_id from employees where job_id not in('ST_CLERK','SH_CLERK','PU_CLERK') order by salary ASC;
+
+--89) Display the employee name,job and his manager.Display also employee who are without manager?
+select first_name,job_id,manager_id from employees where manager_id is null;
+
+--90) Display name of those employee who are getting the highest salary? 
+select first_name from employees where salary IN (SELECT max(salary) FROM employees);
+
+--91) Display those employee whose salary is equal to average of maximum and minimum?
+select * from employees where salary = (select (max(salary)+min(salary))/2 from employees);
+
+--92) Select count of employee in each department where count greater than 3? 
+select count(first_name) from employees group by department_id having count(*)>3;
+
+--93)Display those managers name whose salary is more than average salary of his employee?
+
+--94) Display employee name,sal,comm and net pay for those employee whose net pay is greter than or equal to any other employee salary of the company?
+select first_name,salary,commission_pct,salary+nvl(commission_pct,0)"Net pay" from employees where salary+nvl(commission_pct,0)>= any(select salary from employees); 
+
+--95) Find out the number of employees whose salary is greater than their manager salary?

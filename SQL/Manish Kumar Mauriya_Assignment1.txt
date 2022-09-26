@@ -1,0 +1,78 @@
+1. Display the details of all employees 
+select * from employees;
+
+2) Display the depart information from department table
+describe departments;
+
+3) Display the name and job for all the employees 
+select concat(first_name,last_name)"Employee Name", job_id from employees;
+
+4) Display the name and salary for all the employees 
+select concat(first_name,last_name)"Employee Name", salary from employees;
+
+5) Display the employee no and total salary for all the employees
+select employee_id,salary+nvl(commission_pct,0) "Total salary" from employees;
+
+6) Display the employee name and annual salary for all employees.
+select concat(first_name,last_name)"Employee Name",12*(salary+nvl(commission_pct,0))"Annual salary" from employees;
+
+7) Display the names of all the employees who are working in depart number 10. 
+select concat(first_name,last_name)"Employee Name" from employees where department_id=10;
+
+8) Display the names of all the employees who are working as clerks and drawing a salary more than 3000.
+select first_name from employees where job_id in('PU_CLERK') and salary>3000;
+
+9) Display the employee number and name who are earning comm. 
+select employee_id,first_name,last_name from employees where commission_pct is not null;
+
+10) Display the employee number and name who do not earn any comm. 
+select employee_id,first_name,last_name from employees where commission_pct is null;
+
+11) Display the names of employees who are working as clerks, salesman or analyst and drawing a salary more than 3000.
+select first_name,last_name from employees where job_id in('SH_CLERK','SA_MAN','ANALYST') and salary > 3000;
+
+12) Display the names of the employees who are working in the company for the past 5 years;
+select first_name,last_name from employees where to_char(SYSDATE,'YYYY') - to_char(hire_date,'YYYY') >= 5;
+
+13) Display the list of employees who have joined the company before 30-JUN-90 or after 31-DEC-90.
+select first_name,last_name from employees where hire_date < '30-06-1990' or hire_date > '31-12-1990';
+
+14) Display current Date.
+select SYSDATE from dual;
+
+15) Display the list of all users in your database (use catalog table). 
+select username from all_users;
+
+16) Display the names of all tables from current user; 
+select table_name from user_tables;
+
+17) Display the name of the current user.
+show user;
+
+18) Display the names of employees working in depart number 10 or 20 or 40 or employees working as CLERKS,SALESMAN or ANALYST.
+select first_name,last_name from employees where department_id in(10,20,40) or job_id in('SH_CLERK','SA_MAN','ANALYST');
+
+19) Display the names of employees whose name starts with alaphabet S.
+select first_name from employees where first_name like 'S%';
+
+20) Display the Employee names for employees whose name ends with alaphabet S. 
+select first_name from employees where first_name like '%S';
+
+21) Display the names of employees whose names have second alphabet A in their names.
+select first_name from employees where first_name like '_A%';
+
+22) select the names of the employee whose names is exactly five characters in length.
+select first_name from employees where length(first_name)=5;
+
+
+23) Display the names of the employee who are not working as MANAGERS. 
+select first_name, last_name from employees where job_id not in('ST_MAN');
+
+24) Display the names of the employee who are not working as SALESMAN OR CLERK OR ANALYST.
+select first_name, last_name from employees where job_id not in('SH_CLERK','SA_MAN','ANALYST');
+
+25) Display all rows from emp table.The system should wait after every screen full of informaction. (Hint : Use SET PAUSE ON)
+set pause off 2;
+PAUSE press RETURN to view the employee name;
+select first_name from employees;
+

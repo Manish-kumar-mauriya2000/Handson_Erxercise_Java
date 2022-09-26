@@ -1,0 +1,16 @@
+
+|
+java:S1104
+"ZMake sessionFactory a static final constant or non-public and provide accessors if needed.(àž”üÿÿÿÿÿ8Øí«Ÿ£0
+V
+java:S1444
+"4Make this "public static sessionFactory" field final(àž”üÿÿÿÿÿ8Ùí«Ÿ£0
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(íÏÅ¼8Ûí«Ÿ£0
+ž
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(›ÚºÛ8úí«Ÿ£0
+:
+java:S1118"Hide this public constructor.(›ÚºÛ8 î«Ÿ£0
+y
+java:S1128"WRemove this unused import 'org.hibernate.boot.registry.StandardServiceRegistryBuilder'.(ƒ©¡üøÿÿÿÿ8®ï«Ÿ£0
+d
+java:S1128"BRemove this unused import 'org.hibernate.service.ServiceRegistry'.(œ¿ßçüÿÿÿÿ8±ï«Ÿ£0

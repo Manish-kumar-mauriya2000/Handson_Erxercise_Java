@@ -1,0 +1,86 @@
+--96) Display those department where no employee working? 
+select * from departments where department_id not in (select department_id from employees);
+
+--97) Display those employee whose salary contains at least 3 digits? 
+select * from employees where length(salary)>=3;
+
+--98) Display those employee who joined in the company in the month of Dec? 
+select * from employees where to_char(hire_date,'MM')=12;
+
+--99) Display those employees whose name contains "A"? 
+select * from employees where first_name like '%A%';
+
+--100) Display those employee whose 10% of salary is equal to the year of joining?
+select * from employees where to_char(hire_date,'YY')=salary*0.1;
+
+--101) Display those employee who are working in sales or research? 
+select e.first_name,e.last_name,d.department_id,e.department_id,d.department_name from employees e,departments d where e.department_id=d.department_id and d.department_name='Sales';
+
+--102) Display those employees who joined the company before 15th of the month? 
+select * from employees where to_char(hire_date,'DD')<15;
+
+--103) Delete those records where no of employees in a particular department is less than 3.
+delete from employees group by department_id having count(*)<3;
+
+--104) Display the name of the department where no employee working.
+select * from departments where department_id not in (select department_id from employees);
+
+--105) Display those employees who are working as manager.
+
+
+--106) Print the details of all the employees who are Subordinate to BLAKE?
+select * from employees where first_name='BLAKE';
+
+--107) Display the 10th record of emp table(without using rowid) 
+select * from employees where rownum<11 minus select * from employees where rownum<10;
+
+--108)Delete the 10th record of emp table. 
+delete from employees where rownum<11 minus select * from employees where rownum<10;
+
+--109) Create a copy of emp table.
+create table employees_copy AS select * from employees;
+
+--110) Select ename if ename exists more than once.
+
+
+--111) Display all enames in reverse order?(SMITH:HTIMS). 
+select first_name,reverse(first_name) from employees;
+
+--112) Display those employee whose joining DATE is available in deptno. 
+select * from employees where to_char(hire_date,'DD')IN department_id;
+
+--113) Display those employees name as follows A ALLEN B BLAKE
+select first_name from employees where first_name in('ALLEN','BLAKE');
+
+--114) Delete the rows of employees who are working in the company for more than 2 year
+delete from employees where floor(sysdate-hire_date)>2*365;
+
+--115) Provide a commission(10% Comm Of Sal) to employees who are not earning any commission.
+update employees set salary=salary+salary*0.1 where commission_pct is null;
+
+--116) If any employee has commission his commission should be incremented by 10% of his salary.
+update employees set commission_pct=commission_pct*0.1 where commission_pct is not null;
+
+--117)Display employee number,name and location of the department in which he is working.
+select e.first_name,e.employee_id,d.location_id from employees e, departments d where e.department_id=d.department_id;
+
+--118) Display ename,dname even if there are no employees working in a particular department(use outer join).
+select e.first_name,d.department_name from employees e full outer join departments d on e.department_id=d.department_id;
+
+--119) Display employee name and his manager name. 
+
+
+--120) Write a Query To Delete The Repeated Rows from emp table;
+delete from employees where employee_id in(select employee_id from employees group by employee_id having count(*)>1);
+
+--121) TO DISPLAY 5 TO 7 ROWS FROM A TABLE 
+select * from employees where rownum<=8 minus select * from employees where rownum<=5;
+
+--122) DISPLAY TOP 10 ROWS FROM TABLE.
+select * from employees where rownum<=10;
+
+--123) DISPLAY TOP 3 SALARIES FROM EMP; 
+select * from (select * from employees order by salary desc) where rownum<=3;
+
+--124) Display employee name and his salary is greater than highest average of department number
+select first_name,salary from employees where salary > (select max(avg(salary)) from employees group by employee_id);

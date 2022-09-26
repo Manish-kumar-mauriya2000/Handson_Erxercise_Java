@@ -1,0 +1,78 @@
+--1
+set serveroutput on;
+declare
+ cursor emp_rec is select employee_id,first_name,job_id,salary,trunc(Months_between(sysdate,hire_date)/12) exprs from employees;
+ incre_exp int:=0;
+begin
+    dbms_output.put_line('Ename  ' ||  ' Designation  '|| 'New salary '); 
+    for emp_detail in emp_rec loop
+    incre_exp:=
+    case
+    when emp_detail.exprs < 2 then
+    15
+    when emp_detail.exprs > 2 and emp_detail.exprs < 4 then
+    25
+    when emp_detail.exprs > 4 then
+    35
+    end;
+    update employees set salary=salary+(salary*incre_exp)/100 where employee_id=emp_detail.employee_id;
+    dbms_output.put_line(emp_detail.first_name||' ' || emp_detail.job_id || ' '|| emp_detail.salary);
+    end loop;
+end;
+/
+--------------------------------------------------------------------------------------------
+--2. Write a PL/SQL code to accept an employee number from the user and display whether it is exists or not.
+
+declare
+emp_id int;
+emp_res int;
+begin
+emp_id:=&emp_id;
+select employee_id into emp_res from employees where employee_id=emp_id;
+if(sql%found) then
+dbms_output.put_line(sql%rowcount || 'employee Id is found ' || emp_res);
+else
+dbms_output.put_line('employee not found');
+end if;
+end;
+/
+------------------------------------------------------------------------------
+--3. Write a PL/SQL code to display the name, salary and grade of the employee by accepting employee code. Grade is ‘A’ if salary >25000, ‘B’ if salary > 15000, ‘C’ for other salaries. (Use CASE statement)
+declare
+    cursor emp_grade is select first_name,salary from employees;
+    grade varchar(3);
+begin
+    for emp_record in emp_grade loop
+    grade:=
+    case
+    when emp_record.salary > 25000 then 
+    'A'
+    when emp_record.salary >15000 then 
+    'B'
+    else
+    'C'
+    end;
+    dbms_output.put_line(emp_record.first_name||' '||emp_record.salary||' '||grade);
+    end loop;
+end;
+/
+-------------------------------------------------------------------------------
+--4. Display the details of Account Holders whose credit limit exceeds Rs.1,00,000. 
+declare
+    bank_detail bank%rowtype;
+begin
+    select * into bank_detail from bank where limit_balance>100000;
+    dbms_output.put_line(Ename||E_id||account_type);
+end;
+/
+-----------------------------------------------------------------------------
+--5. In a loop, use a cursor to retrieve the department number and department name from the DEPT table for those departments whose dept_no is less than 
+--40. Use the same cursor to display the employee details for those employees working for HR Department
+declare
+   cursor dept_rec is select department_id,department_name from departments where department_id < 40;
+begin
+    for dept_res in dept_rec loop
+    dbms_output.put_line(dept_res.department_id||'  '||dept_res.department_name);
+    end loop;
+end;
+/

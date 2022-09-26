@@ -1,0 +1,93 @@
+--125) Create table emp with only one column empno; 
+create table emp(empno int);
+
+--126) Add this column to emp table ename varchar2(20).
+alter table emp add ename varchar2(20);
+
+--127) Oops I forgot give the primary key constraint. Add in now. 
+alter table emp add constraint emp_constrain primary key(empno);
+
+--128) Now increase the length of ename column to 30 characters. 
+alter table emp modify ename varchar(30);
+
+--129) Add salary column to emp table. 
+alter table emp add salary int;
+
+--130) I want to give a validation saying that salary cannot be greater 10,000 (note: give a name to this constraint)
+alter table emp add constraint salary check(salary<=10000);
+
+--131) For the time being I have decided that I will not impose this validation. My boss has agreed to pay more than 10,000.
+alter table emp modify constraint salary disable;
+
+--132) My boss has changed his mind. Now he doesn't want to pay more than 10,000.so revoke that salary constraint.
+alter table emp modify constraint salary enable;
+
+--133) Add column called as mgr to your emp table.
+alter table emp add mgr int; 
+
+--134) Oh! This column should be related to empno. Give a command to add this constraint.
+alter table emp add constraint mgr_deptno foreign key(mgr) references emp(empno);
+
+--135) Add deptno column to your emp table.
+alter table emp add deptno int;
+
+--136) This deptno column should be related to deptno column of dept table;
+alter table emp add constraint deptno_dept foreign key(deptno) references dept(empno);
+
+--137) Give the command to add the constraint.
+alter table emp add constraint constraint_name check(salary>0);
+
+--138) Create table called as newemp. Using single command create this table as well as get data into this table (use create table as); 
+create table newemp as select * from emp;
+
+--139) Create table called as newemp. This table should contain only empno,ename,dname.
+create table newemps as select empno,ename,deptno from emp;
+
+--140) Create a simple view on Employees table on first_name, last_name, job_id, dept_id.
+create view simple_view as select first_name,last_name,job_id,department_id from employees;
+select * from simple_view;
+
+--141) Apply any Add/Update/Delete operation on the simple view and verify the View and the base Table contents.
+update simple_view set first_name='Steve' where first_name='Steven';
+
+--142) Create a view on Department table with Check option for SALES department.
+create view sales_dept as select department_id,department_name from departments where department_id=80 with check option;
+select * from sales_dept;
+
+--143) Create a READ ONLY view and verify whether it prevent any write operation.
+create force view simple_view2 as select first_name,last_name from simple_view with read-only option;
+
+--144) Create a Complex view on more than 1 base table on join condition and query the view.
+create view complex_view
+as
+select e.employee_id, e.first_name, e.last_name, jb.job_title from employees e inner join jobs jb ON e.job_id=jb.job_id;
+
+select * from complex_view;
+
+--145) Create a Sequence for employee ID primary key column which will automatically generate ids for the employees.
+create sequence emp_seq1
+start with 1
+increment by 1;
+
+--146) Apply the sequence in any of DML query.
+ insert into newemps("EMPNO","ENAME","DEPTNO") values(emp_seq1.nextval,'divya',3);
+ 
+ --147) Create non unique indexes on the non primary key and non unique columns which you frequently access in your queries.
+ create index Index_name on newemp (salary,mgr);
+ 
+ --148) Create 2 new users and grant them 2 different roles which contain system and object privileges.
+create user manish identified by manish;
+create user newuser identified by newuser;
+
+create  table newtable(id integer,name varchar2(20)) ;
+grant select, insert, update, delete on newtable to newuser;
+
+grant all privileges TO manish;
+
+--149) Revoke the roles from respective users and verify the access privileges.
+revoke select, insert, update, delete on newtable from newuser;
+revoke all privileges from manish;
+
+--150) Display all user defined objects from a data dictionary view
+select * from dictionary;
+

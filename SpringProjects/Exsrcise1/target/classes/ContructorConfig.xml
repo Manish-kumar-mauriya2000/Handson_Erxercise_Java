@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <bean class="org.example.exercise2.CustomerDaoImp" name="users">
+        <constructor-arg name="customer" ref="customer1"/>
+    </bean>
+
+    <bean class="org.example.exercise2.Customers" name="customer1">
+        <constructor-arg name="userId" value="201"/>
+        <constructor-arg name="userName" value="kavin"/>
+        <constructor-arg name="email" value="kavin@gmail.com"/>
+        <constructor-arg name="mobileNumber" value="9876543"/>
+        <constructor-arg name="city" value="Thiruchengode"/>
+    </bean>
+
+</beans>

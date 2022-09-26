@@ -1,0 +1,46 @@
+Create a package called OVER_LOAD. Create two functions in this package,name each function PRINT_IT. The function accepts a date or a character 
+--string and prints a date or a number, depending on how the function is invoked.
+--Note:
+--a. To print the date value, use DD-MON-YY as the input format, and FmMonth, dd yyyy as the output format .Make sure to handle invalid input.
+--b. To print out the number, use 999,999.00 as the input format
+
+create or replace package over_load is
+procedure print_it(dt in varchar);
+procedure print_it(mon in varchar,ddt in varchar,ye in varchar);
+end over_load;
+/
+
+create or replace package body over_load is
+procedure print_it(dt in varchar) 
+is
+begin
+    dbms_output.put_line(dt);
+end print_it;
+
+
+procedure print_it(mon in varchar,ddt in varchar,ye in varchar)
+is
+begin
+    dbms_output.put_line( mon||ddt||ye);
+end print_it;
+
+begin
+    dbms_output.put_line('initializing');
+end over_load;
+/
+
+set serveroutput on;
+declare
+    dttt varchar(15);
+    mont varchar(5);
+    ddt varchar(5);
+    yer varchar(5);
+begin
+    dttt:='12-05-2005';
+    mont:='JUN';
+    ddt:='1';
+    yer:='1998';
+    over_load.print_it(dttt);
+    over_load.print_it(mont,ddt,yer);
+end;
+/

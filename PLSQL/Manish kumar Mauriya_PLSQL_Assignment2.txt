@@ -1,0 +1,142 @@
+--1. Retrieve the first 5 employees with a job history.
+set serveroutput on;
+declare
+
+begin
+    for em in (select first_name,job_id from employees where rownum<=5) loop
+    dbms_output.put_line(em.first_name || ' ' ||em.job_id);
+    end loop;
+end;
+/
+--------------------------------------------------------------------------------
+--2. Develop a PL/SQL block that determines the top employees with respect to salaries.
+declare
+begin
+     for em in (select employee_id,first_name,last_name,salary from employees order by salary desc) loop
+    dbms_output.put_line(em.employee_id||' '||em.first_name || ' ' ||em.last_name||' '||em.salary);
+    end loop;
+end;
+/
+-------------------------------------------------------------------------------------
+--2a &b &c Accept a number n from the user where n represents the number of top n earners from the new_emp table.
+declare
+    n int;
+    type emp_sal is table of int;
+    EmpSal emp_sal;
+begin
+    n:=&n;
+    for i in 1..n loop
+    select distinct salary bulk collect into EmpSal from employees order by salary desc;
+    dbms_output.put_line('Top Salary : '|| EmpSal(i));
+    end loop;
+end;
+/
+---------------------------------------------------------------------------------
+--3. Develop a Procedure which will add an employee record into an Employee Database.
+create or replace procedure add_employee(
+eno in newemp.empno%type,
+ename in newemp.ename%type,
+sal in newemp.salary%type,
+mgr_nam in newemp.mgr%type,
+dept in newemp.deptno%type)
+is
+begin
+    insert into newemp("EMPNO","ENAME","SALARY","MGR","DEPTNO") values(eno,ename,sal,mgr_nam,dept);
+    COMMIT;
+end;
+/
+
+begin
+    add_employee(101,'Manish',50000,2001,1001);
+end;
+/
+-------------------------------------------------------------------------------
+--5a and c. Create a procedure called QUERY_EMP to query the NEW_EMP table, retrieving the salary and job ID for an employee when provided with the employee ID.
+create or replace procedure query_emp(empId employees.employee_id%type) as
+Ename employees.last_name%TYPE;
+sal employees.salary%type;
+jobId employees.job_id%type;
+begin
+    
+    select first_name,salary,job_id  into Ename,sal,jobId from employees where employee_id=empId;
+    dbms_output.put_line(Ename||' '||sal||' '||jobId);
+    commit;
+end;
+/
+
+begin
+    query_emp(103);
+end;
+/
+-----------------------------------------------------------------------------
+--5b. Use bind variables for the two OUT parameters salary and job ID.
+create or replace procedure bind_var(empId in employees.employee_id%type) as
+sal employees.salary%type;
+jobId employees.job_id%type;
+
+begin
+    sal:=6500;
+    jobId:='SA_MAN';
+    select salary,job_id  into sal,jobId from employees where employee_id=empId;
+    dbms_output.put_line(sal||' '||jobId);
+    commit;
+end;
+/
+
+begin
+    bind_var(104);
+end;
+/
+----------------------------------------------------------------------------
+--6. Develop a Function which will increase salary by 15% of all employees.
+
+create or replace function inc_sal(
+incrmnt in int,
+salary in int)
+return int as
+begin
+   return (salary*incrmnt)/100;
+end;
+/
+
+select employee_id,first_name,salary,inc_sal(15,salary)Increment_salary_amount from employees;
+---------------------------------------------------------------------------
+--7. Create a procedure, NEW_EMP to insert a new employee into the EMPLOYEES table. The procedure should contain a call to the 
+--VALID_DEPTID function to check whether the department ID specified for the new employee exists in the DEPARTMENTS table.
+create or replace function valid_deptid
+(dept_id IN departments.department_id%TYPE)
+return boolean
+is
+  temp_dept departments.department_id%TYPE;
+begin
+  Select department_id into temp_dept from departments where department_id = dept_id;
+  return true;
+exception
+  when no_data_found then
+    return false;
+end valid_deptid;
+/
+
+create or replace procedure new_emp(
+eno in newemp.empno%type,
+ename in newemp.ename%type,
+sal in newemp.salary%type,
+mgr_nam in newemp.mgr%type,
+dept in newemp.deptno%type)
+is
+invalid_dept exception;
+begin
+    if(valid_deptid(dept)) then
+    insert into newemp("EMPNO","ENAME","SALARY","MGR","DEPTNO") values(eno,ename,sal,mgr_nam,dept);
+    else
+    raise invalid_dept;
+    end if;
+
+end;
+/
+
+begin
+new_emp(103,'Mauriya',60000,2002,80);
+end;
+/
+------------------------------------------------------------------------------------

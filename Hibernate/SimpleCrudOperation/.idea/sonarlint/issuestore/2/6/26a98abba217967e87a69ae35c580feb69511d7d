@@ -1,0 +1,14 @@
+
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(íÏÅ¼8Åó«Ÿ£0
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(‰äÙ”ûÿÿÿÿ8âô«Ÿ£0
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(™°Èšúÿÿÿÿ8åô«Ÿ£0
+Z	java:S106$"9Replace this use of System.out or System.err by a logger.(âÖðÛúÿÿÿÿ8¾õ«Ÿ£0
+Z	java:S106'"9Replace this use of System.out or System.err by a logger.(™°Èšúÿÿÿÿ8Áõ«Ÿ£0
+Z	java:S1061"9Replace this use of System.out or System.err by a logger.(ôêï‚ÿÿÿÿÿ8Ïõ«Ÿ£0
+Z	java:S1064"9Replace this use of System.out or System.err by a logger.(¨¶ÑÍþÿÿÿÿ8Ôõ«Ÿ£0
+Z	java:S106B"9Replace this use of System.out or System.err by a logger.(™°Èšúÿÿÿÿ8ãõ«Ÿ£0
+U	java:S106P"9Replace this use of System.out or System.err by a logger.(¹“ÃÃ8õõ«Ÿ£0
+Z	java:S106Q"9Replace this use of System.out or System.err by a logger.(¨ÿüçûÿÿÿÿ8÷õ«Ÿ£0
+Z	java:S106T"9Replace this use of System.out or System.err by a logger.(™°Èšúÿÿÿÿ8†ö«Ÿ£0
+[
+java:S1128"9Remove this unused import 'org.hibernate.SessionFactory'.(ñ¦«¬þÿÿÿÿ8ˆö«Ÿ£0

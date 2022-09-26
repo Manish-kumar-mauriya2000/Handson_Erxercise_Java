@@ -1,0 +1,121 @@
+--26) Display the total number of employee working in the company. 
+select count(first_name) from employees;
+
+--27) Display the total salary being paid to all employees. 
+select sum(salary) from employees;
+
+--28) Display the maximum salary from emp table. 
+select max(salary) from employees;
+
+--29) Display the minimum salary from emp table. 
+select min(salary) from employees;
+
+--30) Display the average salary from emp table.
+select avg(salary) from employees;
+
+--31) Display the maximum salary being paid to CLERK. 
+select max(salary) from employees where job_id in('ST_CLERK');
+
+--32) Display the maximum salary being paid to depart number 20. 
+select max(salary) from employees where department_id in(20);
+
+--33) Display the minimum salary being paid to any SALESMAN. 
+select min(salary) from employees where job_id in('ST_MAN');
+
+--34) Display the average salary drawn by MANAGERS.
+select avg(salary) from employees where job_id in('SA_MAN');
+
+--35) Display the total salary drawn by ANALYST working in depart number 40. 
+select sum(salary) from employees where department_id in(40);
+
+--36) Display the names of the employee in order of salary i.e the name of the employee earning lowest salary should salary appear first.
+select first_name,salary from employees order by salary ASC;
+
+--37) Display the names of the employee in descending order of salary.
+select first_name,salary from employees order by salary DESC;
+
+--38) Display the names of the employee in order of employee name. 
+select first_name from employees order by first_name;
+
+--39) Display empno, ename, deptno, sal sort the output first base on name and within name by deptno and within deptno by sal.
+select employee_id,first_name,department_id,salary from employees order by first_name,department_id, salary; 
+
+--40) Display the name of the employee along with their annual salary(sal*12).The name of the employee earning highest annual salary should apper first.
+select first_name,salary*12 from employees order by salary desc;
+
+--41) Display name, salary, hra, pf, da, total salary for each employee. The output should be in the order of total salary,hra 15% of salary, da 10% of salary, pf 5% salary, total salary will be(salary+hra+da)-pf.
+select first_name,salary,salary*0.15 "HRA",salary*0.10 "DA",salary*0.05 "PF",(salary+salary*0.15+salary*0.10)-(salary*0.05) "Total Salary" from employees;
+
+--42) Display department numbers and total number of employees working in each department.
+select department_id,count(department_id)"Employee working" from employees group by department_id;
+
+--43) Display the various jobs and total number of employees within each job group.
+select job_id,count(job_id)"Employee working" from employees group by job_id;
+
+--44) Display the depart numbers and total salary for each department.
+select department_id,sum(salary)"Total salary" from employees group by department_id;
+
+--45) Display the depart numbers and max salary for each department.
+select department_id,max(salary)"Maximum salary" from employees group by department_id;
+
+--46) Display the various jobs and total salary for each job 
+select job_id, sum(salary) from employees group by job_id;
+
+--47) Display the various jobs and total salary for each job 
+select job_id, sum(salary) from employees group by job_id;
+
+--48) Display the depart numbers with more than three employees in each dept.
+select department_id,count(department_id)"More than three employees" from employees group by department_id having count(*)>3; 
+
+--49) Display the various jobs along with total salary for each of the jobs where total salary is greater than 40000.
+select job_id,sum(salary) from employees group by job_id having sum(salary)>40000; 
+
+--50) Display the various jobs along with total number of employees in each job. The output should contain only those jobs with more than three employees.
+select job_id,count(first_name) from employees group by job_id having count(first_name)>3;
+
+--51) Search for the employees with the pattern ‘A_B’ in their names.
+select first_name from employees where first_name like '%A\_B%' ESCAPE '\';
+
+--52. Find the First occurrence of character 'a' from the following string i.e 'Computer Maintenance Corporation'.
+select instr('Computer Maintenance Corporation','a') from dual;
+
+--53. Display the information from emp table. Where job manager is found it should be displayed as boss(Use replace function). 
+select employee_id,first_name,last_name,replace('job manager','job manager','boss') "Job" from employees;
+
+--54) Display the names of the employees in Uppercase.
+select upper(first_name) from employees;
+
+--55) Display the names of the employees in Lowercase. 
+select lower(first_name) from employees;
+
+--56) Display the names of the employees in Proper case. 
+select initcap(first_name),initcap(last_name) from employees;
+
+--57) Display the length of Your name using appropriate function. 
+select length('Manish Kumar Mauriya') from dual;
+
+--58) Display the length of all the employee names. 
+select length(first_name) from employees;
+
+--59) select name of the employee concatenate with employee number. 
+select first_name||' '||last_name||'_'||employee_id "Name" from employees;
+
+--60) User appropriate function and extract 3 characters starting from 2 characters from the following string 'Oracle'. i.e the output should be 'rac'.
+select substr('Oracle',2,3) from dual;
+
+--61) Display empno, ename, deptno from emp table. Instead of display department numbers display the related department name(Use decode function).
+select employee_id,first_name,decode(department_id,10,'account',20,'sales','non-department') from employees;
+
+--62) Display the current date as 15th August Friday Nineteen Ninety Seven. 
+select to_char(sysdate,'ddth Month day year') "Current date" from dual;
+
+--63) Display the following output for each row from emp table.For ex: 
+--Scott has joined the company on Wednesday 13th August nineteen ninety.
+--Sham has joined the company on Wednesday 13th August nineteen ninety.
+select first_name,to_char(hire_date,'day ddth Month Year') from employees where first_name='Nancy';
+
+--64) Find the date for nearest Saturday after current date. 
+select next_day(sysdate,'saturday') from dual;
+
+--65) Display the date three months before the current date.
+select add_months(sysdate,-3) from dual;

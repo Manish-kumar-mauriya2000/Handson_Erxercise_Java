@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="org.mycalculator.com.CalculaorOptionsTest" time="0.053" tests="1" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="sun.desktop" value="windows"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="D:\Virtusa_training_FSD\Maven_projects\Calculator\target\test-classes;D:\Virtusa_training_FSD\Maven_projects\Calculator\target\classes;C:\Users\MANISH\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\MANISH\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="user.timezone" value="Asia/Calcutta"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="user.country" value="IN"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="E:\Program Files\Java\jdk1.8.0_202\jre\bin"/>
+    <property name="sun.java.command" value="C:\Users\MANISH\AppData\Local\Temp\surefire351534744524360677\surefirebooter7721137515748031105.jar C:\Users\MANISH\AppData\Local\Temp\surefire351534744524360677 2022-07-14T16-19-47_055-jvmRun1 surefire3313549337316669380tmp surefire_02371825397336287465tmp"/>
+    <property name="surefire.test.class.path" value="D:\Virtusa_training_FSD\Maven_projects\Calculator\target\test-classes;D:\Virtusa_training_FSD\Maven_projects\Calculator\target\classes;C:\Users\MANISH\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\MANISH\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\MANISH"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.home" value="E:\Program Files\Java\jdk1.8.0_202\jre"/>
+    <property name="basedir" value="D:\Virtusa_training_FSD\Maven_projects\Calculator"/>
+    <property name="file.separator" value="\"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="C:\Users\MANISH\AppData\Local\Temp\surefire351534744524360677\surefirebooter7721137515748031105.jar"/>
+    <property name="sun.boot.class.path" value="E:\Program Files\Java\jdk1.8.0_202\jre\lib\resources.jar;E:\Program Files\Java\jdk1.8.0_202\jre\lib\rt.jar;E:\Program Files\Java\jdk1.8.0_202\jre\lib\sunrsasign.jar;E:\Program Files\Java\jdk1.8.0_202\jre\lib\jsse.jar;E:\Program Files\Java\jdk1.8.0_202\jre\lib\jce.jar;E:\Program Files\Java\jdk1.8.0_202\jre\lib\charsets.jar;E:\Program Files\Java\jdk1.8.0_202\jre\lib\jfr.jar;E:\Program Files\Java\jdk1.8.0_202\jre\classes"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="1.8.0_202-b08"/>
+    <property name="user.name" value="MANISH"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.endorsed.dirs" value="E:\Program Files\Java\jdk1.8.0_202\jre\lib\endorsed"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\MANISH\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\MANISH\AppData\Local\Temp\"/>
+    <property name="java.version" value="1.8.0_202"/>
+    <property name="user.dir" value="D:\Virtusa_training_FSD\Maven_projects\Calculator"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.library.path" value="E:\Program Files\Java\jdk1.8.0_202\jre\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;D:\Oraclexe\app\oracle\product\11.2.0\server\bin;;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;E:\Program Files\Microsoft VS Code\bin;E:\Program Files\Git\cmd;E:\spark-3.1.2-bin-hadoop3.2\bin;E:\Program Files\Java\jdk1.8.0_202\bin;E:\incident-pyspark_kafka_SS\hadoop\hadoop-3.2.1\bin;E:\kafka_2.13-2.8.1\bin\windows;E:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;E:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;D:\gatling-charts-highcharts-bundle-3.6.1\bin;D:\apache-maven-3.8.3\bin;E:\Program Files\nodejs\;C:\ffmpeg\bin;E:\Anaconda3;E:\Anaconda3\Library\mingw-w64\bin;E:\Anaconda3\Library\usr\bin;E:\Anaconda3\Library\bin;E:\Anaconda3\Scripts;C:\Users\MANISH\AppData\Local\Programs\Python\Python37\Scripts\;C:\Users\MANISH\AppData\Local\Programs\Python\Python37\;C:\Users\MANISH\AppData\Local\Microsoft\WindowsApps;E:\Program Files\Java\jdk-11.0.12\bin;E:\kafka_2.13-2.8.1\bin\windows;D:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2021.2.3\bin;;C:\Users\MANISH\AppData\Roaming\npm;C:\Users\MANISH\AppData\Local\GitHubDesktop\bin;."/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="25.202-b08"/>
+    <property name="java.ext.dirs" value="E:\Program Files\Java\jdk1.8.0_202\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="52.0"/>
+  </properties>
+  <testcase name="shouldAnswerWithTrue" classname="org.mycalculator.com.CalculaorOptionsTest" time="0.005"/>
+</testsuite>

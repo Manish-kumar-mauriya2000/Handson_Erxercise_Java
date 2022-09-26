@@ -1,0 +1,5 @@
+Oracle 11g
+https://www.oracle.com/database/technologies/xe-prior-release-downloads.html
+
+SQL Plus client:
+https://www.oracle.com/in/database/technologies/instant-client/winx64-64-downloads.html
